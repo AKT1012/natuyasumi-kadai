@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twitter風アプリ</title>
+    <title>名前はまだない</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Twitter風アプリ</h1>
-        <div class="tweet-box">
-            <textarea id="tweet-input" placeholder="今何してる？"></textarea>
-            <button id="tweet-button">ツイート</button>
+        <h1>名前はまだない</h1>
+        <input type="text" id="search-input" placeholder="スレッドを検索">
+        <button id="search-button">検索</button>
+
+        <div id="thread-creation">
+            <input type="text" id="thread-title-input" placeholder="スレッドタイトルを入力">
+            <button id="create-thread-button">スレッドを作成</button>
         </div>
-        <div id="tweets-container"></div>
+
+        <div id="threads-container"></div>
     </div>
+
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="chat-thread-title"></h2>
+            <div id="chat-messages"></div>
+            <textarea id="chat-input" placeholder="メッセージを入力"></textarea>
+            <button id="send-message-button">送信</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
+
