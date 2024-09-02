@@ -81,6 +81,52 @@ function openChat(threadIndex) {
     };
 }
 
+document.getElementById('login-button').addEventListener('click', async () => {
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        localStorage.setItem('token', data.token);
+        document.getElementById('login-container').style.display = 'none';
+        document.querySelector('.container').style.display = 'block';
+    } else {
+        alert(data.message);
+    }
+});
+
+document.getElementById('register-button').addEventListener('click', async () => {
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        localStorage.setItem('token', data.token);
+        document.getElementById('login-container').style.display = 'none';
+        document.querySelector('.container').style.display = 'block';
+    } else {
+        alert(data.message);
+    }
+});
+
 // チャットウィンドウを閉じる
 document.querySelector('.close-button').addEventListener('click', () => {
     document.getElementById('chat-modal').style.display = 'none';
